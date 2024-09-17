@@ -19,6 +19,17 @@ class ViewController: UIViewController {
     
     @IBAction func keyPressed(_ sender: UIButton) {
         playSound(soundName: sender.currentTitle!)
+        print("Start")
+        UIView.animate(withDuration: 0.2, animations: {
+            sender.alpha = 0.5
+        }) { _ in
+            // Restore the button's alpha and print B after the dim effect
+            UIView.animate(withDuration: 0.2, animations: {
+                sender.alpha = 1.0
+            }) { _ in
+                print("End")
+            }
+        }
     }
     
     func playSound(soundName: String) {
